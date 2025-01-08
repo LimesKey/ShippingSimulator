@@ -35,7 +35,7 @@ public class RectangularPackage implements Package {
     @Override
     public double cost() {
         double volumeCm3 = volume().to(Units.CUBIC_METRE).getValue().doubleValue();
-        double baseCost = volumeCm3 * 0.15;
+        double baseCost = volumeCm3 * 0.15 * weight.to(Units.GRAM).getValue().doubleValue();
 
         if (destination == Destination.DOMESTIC) {
             return baseCost * tax;
@@ -47,7 +47,7 @@ public class RectangularPackage implements Package {
     public static RectangularPackage create(Quantity<Length> length, Quantity<Length> width,
             Quantity<Length> height, Quantity<Mass> weight, Destination destination, double inflationAdjustment,
             double tax) {
-        //todoooo
+        // todoooo
         return new RectangularPackage(length, width, height, weight, destination);
     }
 }

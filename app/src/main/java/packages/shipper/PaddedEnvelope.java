@@ -43,12 +43,10 @@ public class PaddedEnvelope implements Package {
         }
     }
 
-    public static Package create() {
-        Scanner scanS = new Scanner(System.in);
-
+    public static Package create(Scanner scanS) {
         System.out.print("\nIs this envelope going internationally?"
                 + " (Yes or No): ");
-            
+
         String response = scanS.nextLine();
 
         Destination dest = switch (response.toLowerCase().strip()) {
@@ -61,10 +59,10 @@ public class PaddedEnvelope implements Package {
 
         Quantity<Length> length = Quantities.getQuantity(scanS.nextDouble(), MetricPrefix.CENTI(Units.METRE));
 
-        // 
+        //
 
         System.out.print("\nWhat is the height of the envelope in centimeters: ");
-    
+
         Quantity<Length> height = Quantities.getQuantity(scanS.nextDouble(), MetricPrefix.CENTI(Units.METRE));
 
         return new PaddedEnvelope(length, height, PaddedEnvelope.width, dest);
