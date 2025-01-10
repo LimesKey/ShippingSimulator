@@ -57,13 +57,15 @@ public class PaddedEnvelope implements Package {
 
         System.out.print("\nWhat is the length of the envelope in centimeters: ");
 
-        Quantity<Length> length = Quantities.getQuantity(scanS.nextDouble(), MetricPrefix.CENTI(Units.METRE));
+        Quantity<Length> length = Quantities.getQuantity(Double.parseDouble(scanS.nextLine()),
+                MetricPrefix.CENTI(Units.METRE));
 
         //
 
         System.out.print("\nWhat is the height of the envelope in centimeters: ");
 
-        Quantity<Length> height = Quantities.getQuantity(scanS.nextDouble(), MetricPrefix.CENTI(Units.METRE));
+        Quantity<Length> height = Quantities.getQuantity(Double.parseDouble(scanS.nextLine()),
+                MetricPrefix.CENTI(Units.METRE));
 
         return new PaddedEnvelope(length, height, PaddedEnvelope.width, dest);
     }
