@@ -1,5 +1,7 @@
 package packages.shipper;
 
+import java.util.Scanner;
+
 import javax.measure.MetricPrefix;
 import javax.measure.Quantity;
 import javax.measure.quantity.Length;
@@ -44,10 +46,39 @@ public class RectangularPackage implements Package {
         }
     }
 
-    public static RectangularPackage create(Quantity<Length> length, Quantity<Length> width,
-            Quantity<Length> height, Quantity<Mass> weight, Destination destination, double inflationAdjustment,
-            double tax) {
-        // todoooo
-        return new RectangularPackage(length, width, height, weight, destination);
+    public static Package create(Scanner scanS) {
+        System.out.print("\nIs this box going internationally?"
+                + " (Yes or No): ");
+
+        String response = scanS.nextLine();
+
+        Destination dest = switch (response.toLowerCase().strip()) {
+            case "yes" -> Destination.INTERNATIONAL;
+            case "no" -> Destination.DOMESTIC;
+            default -> throw new IllegalArgumentException("Invalid response: " + response);
+        };
+
+        System.out.print("\nWhat is the length of the box in centimeters: ");
+
+        Quantity<Length> length = Quantities.getQuantity(Double.parseDouble(scanS.nextLine()),
+                MetricPrefix.CENTI(Units.METRE));
+
+        //
+
+        System.out.print("\nWhat is the height of the box in centimeters: ");
+
+        Quantity<Length> height = Quantities.getQuantity(Double.parseDouble(scanS.nextLine()),
+                MetricPrefix.CENTI(Units.METRE));
+
+        System.out.print("\nWhat is the width of the box in centimeters: ");
+
+
+        Quantity<Length> width = Quantities.getQuantity(Double.parseDouble(scanS.nextLine()),
+                MetricPrefix.CENTI(Units.METRE));
+
+        System.out.print("\nWhat is the weight of the box in grams: ");
+        Quantity<Mass> weight = Quantities.getQuantity(Double.parseDouble(scanS.nextLine()), Units.GRAM);    
+
+        return new RectangularPackage(length, width, height, weight, dest);
     }
 }

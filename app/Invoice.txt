@@ -1,5 +1,0 @@
-Invoice for Package Shipment
-
-Package #1: $55.10
-Package #2: $55.10
-Total: $110.20

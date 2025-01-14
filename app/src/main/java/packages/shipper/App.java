@@ -62,7 +62,7 @@ public class App {
         }
 
         if (responseString.equalsIgnoreCase("yes")) {
-            PrintWriter writer;
+            PrintWriter writer; // todo: change to bufferedWriter in future
             try {
                 writer = new PrintWriter(new File("Invoice.txt"));
 
@@ -86,9 +86,9 @@ public class App {
     }
 
     /**
-     * Name: setData
+     * Name: handlePackages
      * 
-     * @param count - the package number
+     * @param scanS - the scanner to use
      * @return - Packages attributes
      *         Description: Asks the user what the attributes of the packages are.
      */
@@ -96,13 +96,15 @@ public class App {
         System.out.println("What kind of package is being shipped?"
                 + "\nPlease select a number: "
                 + "\n1) Box"
-                + "\n2) Bubble Wrapped"
-                + "\n3) Envelope ");
+                + "\n2) Envelope ");
         int choice = Integer.parseInt(scanS.nextLine());
 
         switch (choice) {
-            case 3:
-                Package foo = PaddedEnvelope.create(scanS);
+            case 1:
+                Package box = RectangularPackage.create(scanS);
+                return box;
+            case 2:
+                Package foo = Envelope.create(scanS);
                 return foo;
             default:
                 return null;
