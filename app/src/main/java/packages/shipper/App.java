@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 /*
  * Program: Packages Shipping / Shipping Simulator
  * Programmer: Ryan Di Lorenzo // Miguel Afara
- * Date: Janurary 8th, 2025
+ * Date: Janurary 13th, 2025
  * Description: Simulate the process of ordering packages from popular carriers like Canada Post or UPS, but in your terminal! 
  */
 
